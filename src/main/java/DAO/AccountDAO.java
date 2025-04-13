@@ -9,8 +9,7 @@ public class AccountDAO {
 
     // Return account object if record exists containing username
     public Boolean searchUsername(String username) {
-        Connection connection = ConnectionUtil.getConnection();
-        try {
+        try (Connection connection = ConnectionUtil.getConnection()) {
             String sql = "SELECT * FROM account WHERE username = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
@@ -30,8 +29,7 @@ public class AccountDAO {
     // Return account object with generated ID for given username and password
     public Account insertAccount(String username, String password) {
         if (!this.searchUsername(username) && !username.isBlank() && password.length() >= 4) {
-            Connection connection = ConnectionUtil.getConnection();
-            try {
+            try (Connection connection = ConnectionUtil.getConnection()) {
                 String sql = "INSERT INTO account(username, password) VALUES(?, ?)";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
@@ -54,8 +52,7 @@ public class AccountDAO {
 
     // Return account object for given username and password
     public Account loginAccount(String username, String password) {
-        Connection connection = ConnectionUtil.getConnection();
-        try {
+        try (Connection connection = ConnectionUtil.getConnection()) {
             String sql = "SELECT * FROM account WHERE username = ? AND password = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 

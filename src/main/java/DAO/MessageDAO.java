@@ -13,8 +13,7 @@ public class MessageDAO {
     // Return message object for record with posted_by, message_text, and time_posted_epoch
     public Message createMessage(int posted_by, String message_text, long time_posted_epoch) {
         if (!message_text.isBlank() && message_text.length() < 256) {
-            Connection connection = ConnectionUtil.getConnection();
-            try {
+            try (Connection connection = ConnectionUtil.getConnection()) {
                 String sql = "INSERT INTO message(posted_by, message_text, time_posted_epoch) VALUES(?, ?, ?)";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 
@@ -38,9 +37,8 @@ public class MessageDAO {
 
     // Return list of message objects containing all messages in the database
     public List<Message> getAllMessages() {
-        Connection connection = ConnectionUtil.getConnection();
         List<Message> messages = new ArrayList<>();
-        try {
+        try (Connection connection = ConnectionUtil.getConnection()) {
             String sql = "SELECT * FROM message";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             
@@ -61,8 +59,7 @@ public class MessageDAO {
 
     // Return message object for record for given message_id
     public Message getMessageByMessageID(int message_id) {
-        Connection connection = ConnectionUtil.getConnection();
-        try {
+        try (Connection connection = ConnectionUtil.getConnection()) {
             String sql = "SELECT * FROM message WHERE message_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
@@ -85,8 +82,7 @@ public class MessageDAO {
 
     // Return boolean for the deletion of a message given message_id
     public Boolean deleteMessageByMessageID(int message_id) {
-        Connection connection = ConnectionUtil.getConnection();
-        try {
+        try (Connection connection = ConnectionUtil.getConnection()) {
             String sql = "DELETE FROM message WHERE message_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
@@ -103,8 +99,7 @@ public class MessageDAO {
     // Return boolean for the update of a message given message_text and message_id
     public Boolean updateMessageByMessageID(String message_text, int message_id) {
         if (!message_text.isBlank() && message_text.length() < 256) {
-            Connection connection = ConnectionUtil.getConnection();
-            try {
+            try (Connection connection = ConnectionUtil.getConnection()) {
                 String sql = "UPDATE message SET message_text = ? WHERE message_id = ?";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
@@ -122,9 +117,8 @@ public class MessageDAO {
 
     // Return list of message objects containing all messages for given user_id
     public List<Message> getAllMessageByUserID(int user_id) {
-        Connection connection = ConnectionUtil.getConnection();
         List<Message> messages = new ArrayList<>();
-        try {
+        try (Connection connection = ConnectionUtil.getConnection()) {
             String sql = "SELECT * FROM message WHERE posted_by = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
