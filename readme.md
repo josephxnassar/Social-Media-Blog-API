@@ -6,7 +6,7 @@ This social media application will serve as a backend API, providing the infrast
 
 ## Technologies Used
 
-* Java - java 23.0.2 2025-01-21
+* Java - java 23.0.2
 * Maven - apache maven 3.0.0-M7
 * h2database - h2 2.1.214
 * Javalin - javalin 5.0.1
@@ -68,4 +68,22 @@ Account.java and Message.java are model classes representing an account and a me
 
 ## License
 
-This project uses the following license: [<LICENSE>](</workspace/josephxnassar-pep-project/LICENSE.txt>).
+Copyright (c) 2025 Joseph nassar
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
+copies of the Software, and to permit persons to whom the Software is 
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in 
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN 
+THE SOFTWARE.
