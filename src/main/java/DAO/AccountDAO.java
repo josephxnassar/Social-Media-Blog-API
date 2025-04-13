@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class AccountDAO {
 
-    // DQL
+    // Return account object if record exists containing username
     public Boolean searchUsername(String username) {
         Connection connection = ConnectionUtil.getConnection();
         try {
@@ -27,7 +27,7 @@ public class AccountDAO {
         return false;
     }
 
-    // DML
+    // Return account object with generated ID for given username and password
     public Account insertAccount(String username, String password) {
         if (!this.searchUsername(username) && !username.isBlank() && password.length() >= 4) {
             Connection connection = ConnectionUtil.getConnection();
@@ -52,7 +52,7 @@ public class AccountDAO {
         return null;
     }
 
-    // DQL
+    // Return account object for given username and password
     public Account loginAccount(String username, String password) {
         Connection connection = ConnectionUtil.getConnection();
         try {

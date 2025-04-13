@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MessageDAO {
 
-    // DML
+    // Return message object for record with posted_by, message_text, and time_posted_epoch
     public Message createMessage(int posted_by, String message_text, long time_posted_epoch) {
         if (!message_text.isBlank() && message_text.length() < 256) {
             Connection connection = ConnectionUtil.getConnection();
@@ -36,7 +36,7 @@ public class MessageDAO {
         return null;
     }
 
-    // DQL
+    // Return list of message objects containing all messages in the database
     public List<Message> getAllMessages() {
         Connection connection = ConnectionUtil.getConnection();
         List<Message> messages = new ArrayList<>();
@@ -59,7 +59,7 @@ public class MessageDAO {
         return messages;
     }
 
-    // DQL
+    // Return message object for record for given message_id
     public Message getMessageByMessageID(int message_id) {
         Connection connection = ConnectionUtil.getConnection();
         try {
@@ -83,7 +83,7 @@ public class MessageDAO {
         return null;
     }
 
-    // DML
+    // Return boolean for the deletion of a message given message_id
     public Boolean deleteMessageByMessageID(int message_id) {
         Connection connection = ConnectionUtil.getConnection();
         try {
@@ -100,7 +100,7 @@ public class MessageDAO {
         return false;
     }
 
-    // DML
+    // Return boolean for the update of a message given message_text and message_id
     public Boolean updateMessageByMessageID(String message_text, int message_id) {
         if (!message_text.isBlank() && message_text.length() < 256) {
             Connection connection = ConnectionUtil.getConnection();
@@ -120,7 +120,7 @@ public class MessageDAO {
         return false;
     }
 
-    // DQL
+    // Return list of message objects containing all messages for given user_id
     public List<Message> getAllMessageByUserID(int user_id) {
         Connection connection = ConnectionUtil.getConnection();
         List<Message> messages = new ArrayList<>();
